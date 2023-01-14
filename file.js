@@ -1,5 +1,6 @@
 var eventArray = [];
 var today = new Date();
+var calendar = null
 
 /**
  * https://ourcodeworld.com/articles/read/1438/how-to-read-multiple-files-at-once-using-the-filereader-class-in-javascript
@@ -61,8 +62,8 @@ function fileToArray(input) {
             // format HHMMSS
             var beginTime = String(/\d\d\d\d\d\d/.exec(/[T]\d\d\d\d\d\d/.exec(inputArray[i])));
             eventArray.push([eventDate, beginTime, endTime]);
-            eventArray.push([eventDate, '000000', '000000']);
-            eventArray.push([eventDate, '235900', '235900']);
+            // eventArray.push([eventDate, '000000', '000000']);
+            // eventArray.push([eventDate, '235900', '235900']);
         } 
     }
     eventArray = multiDimensionalUnique(eventArray);
@@ -100,11 +101,31 @@ function removeOverlap(inputArray) {
         }
     }
     console.log(inputArray);
+    findAvailability(inputArray);
 }
 
-// function findAvailability(inputArray) {
-
-// }
+function findAvailability(inputArray) {
+    calendar.removeAllEvents();
+    for (var i in inputArray) {
+        // while(inputArray[i][1] < 6) {
+        //     inputArray[i][1] = "0" + inputArray[i][1];
+        // }
+        // while(inputArray[i][2] < 6) {
+        //     inputArray[i][2] = "0" + inputArray[i][2];
+        // }
+        let year = inputArray[i][0].substring(0,4);
+        let month = inputArray[i][0].substring(4,6);
+        let day = inputArray[i][0].substring(6,8);
+        let beginTime = inputArray[i][1].replace(/..\B/g, '$&:');
+        let endTime = inputArray[i][2].replace(/..\B/g, '$&:');
+        let output1 = year + "-" + month + "-" + day + "T" + beginTime;
+        let output2 = year + "-" + month + "-" + day + "T" + endTime;
+        console.log(output1);
+        console.log(output2);
+        newEvent(output1, output2);
+    }
+}
+// '2010-01-09T12:30:00',
 
 /**
  * Creates calendar
@@ -124,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //   nowIndicator: true,
       allDaySlot: false,
       expandRows: true,
-      eventBackgroundColor: '#ff8177',
+      eventBackgroundColor: '#3c933f',
       headerToolbar: {
         left: 'title',
         center: '',
@@ -136,12 +157,35 @@ document.addEventListener('DOMContentLoaded', function() {
         prevYear: 'chevrons-left', // double chevron
         nextYear: 'chevrons-right' // double chevron
       },
+    //   businessHours: {
+    //     // days of week. an array of zero-based day of week integers (0=Sunday)
+    //     daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
+    //     startTime: '10:00', // a start time (10am in this example)
+    //     endTime: '18:00', // an end time (6pm in this example)
+    //   },
       dayHeaderFormat: {
         weekday: 'short'
       }
     });
     calendar.render();
   });
+
+  /**
+ * Creates new break event based on inputs
+ * 
+ * @param {String} beginTime HHMMSS
+ * @param {String} endTime HHMMSS
+ */
+function newEvent(beginTime, endTime) {
+    
+    // create break events
+    calendar.addEvent({
+      title: 'Unavailable',
+      start: beginTime,
+      end: endTime,
+      allDay: false
+    });
+  }
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     var calendarEl = document.getElementById('calendar');
