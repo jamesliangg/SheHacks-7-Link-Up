@@ -1,3 +1,4 @@
+// global variables
 var eventArray = [];
 var today = new Date();
 var calendar = null
@@ -6,6 +7,7 @@ VERSION:2.0
 PRODID:-//James Liang//SheHacks//EN`;
 var ending = 'END:VCALENDAR';
 
+// files
 /**
  * https://ourcodeworld.com/articles/read/1438/how-to-read-multiple-files-at-once-using-the-filereader-class-in-javascript
  * 
@@ -32,7 +34,7 @@ function getFiles() {
     });
   }
 
-  /**
+/**
  * https://ourcodeworld.com/articles/read/1438/how-to-read-multiple-files-at-once-using-the-filereader-class-in-javascript
  * 
  * @param {*} file 
@@ -51,31 +53,72 @@ function readFileAsText(file){
     });
   }
 
+/**
+ * Converts file to array
+ * 
+ * @param {String} input calendar file
+ */
 function fileToArray(input) {
     var inputArray = input.split("\n");
-    // console.log(inputArray);
     for (var i in inputArray) {
         if (inputArray[i].includes("DTEND;")) {
             // format YYYYMMDD
             var eventDate = String(/[2]\d\d\d\d\d\d\d/.exec(inputArray[i]));
             // format HHMMSS
             var endTime = String(/\d\d\d\d\d\d/.exec(/[T]\d\d\d\d\d\d/.exec(inputArray[i])));
-            console.log(endTime);
         } 
         else if (inputArray[i].includes("DTSTART;")) {
             // format HHMMSS
             var beginTime = String(/\d\d\d\d\d\d/.exec(/[T]\d\d\d\d\d\d/.exec(inputArray[i])));
             eventArray.push([eventDate, beginTime, endTime]);
-            // eventArray.push([eventDate, '000000', '000000']);
-            // eventArray.push([eventDate, '235900', '235900']);
         } 
     }
+    // remove duplicates
     eventArray = multiDimensionalUnique(eventArray);
     eventArray = eventArray.sort();
     console.log(eventArray);
+    // remove overlapping events
     removeOverlap(eventArray);
 }
 
+/**
+ * Retrieves values required for calendar files and formats text
+ */
+function downloadPlan() {
+    var beginDate = document.getElementById("beginDate").value;
+    var beginTime = document.getElementById("beginTime").value;
+    var endDate = document.getElementById("endDate").value;
+    var endTime = document.getElementById("endTime").value;
+    var eventTitle = document.getElementById("eventTitle").value;
+    var eventLocation = document.getElementById("location").value;
+    fileOutput = fileOutput + "\n" + ("BEGIN:VEVENT");
+    fileOutput = fileOutput + "\n" + (`DTSTART;TZID=America/Toronto:${beginDate.replace(/-/g,'')}T${beginTime.replace(':','')}00`);
+    fileOutput = fileOutput + "\n" + (`DTEND;TZID=America/Toronto:${endDate.replace(/-/g,'')}T${endTime.replace(':','')}00`);
+    fileOutput = fileOutput + "\n" + (`SUMMARY:${eventTitle}`);
+    fileOutput = fileOutput + "\n" + (`LOCATION:${eventLocation}`)
+    fileOutput = fileOutput + "\n" + ("END:VEVENT");
+    fileOutput = fileOutput + "\n" + ending;
+    download('trip_plan.ics', fileOutput);
+}
+
+/**
+ * Creates and downloads file
+ * https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
+ * 
+ * @param {String} filename name of downloaded file
+ * @param {String} text file contents
+ */
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+// arrays
 /**
  * Removes duplicate entries in array
  * https://stackoverflow.com/questions/20339466/how-to-remove-duplicates-from-a-two-dimensional-array
@@ -95,6 +138,11 @@ function multiDimensionalUnique(arr) {
     return uniques;
   }
 
+/**
+ * Checks for events that are within another timeslot
+ * 
+ * @param {Array} inputArray array to be checked
+ */
 function removeOverlap(inputArray) {
     for (var i = 0; i < inputArray.length - 1; i++) {
         if (inputArray[i][0].includes(inputArray[i+1][0])) {
@@ -108,6 +156,12 @@ function removeOverlap(inputArray) {
     findAvailability(inputArray);
 }
 
+// algorithm
+/**
+ * 
+ * 
+ * @param {Array} inputArray 
+ */
 function findAvailability(inputArray) {
     calendar.removeAllEvents();
     for (var i in inputArray) {
@@ -116,15 +170,15 @@ function findAvailability(inputArray) {
         let day = inputArray[i][0].substring(6,8);
         let beginTime = inputArray[i][1].replace(/..\B/g, '$&:');
         let endTime = inputArray[i][2].replace(/..\B/g, '$&:');
-        let output1 = year + "-" + month + "-" + day + "T" + beginTime;
-        let output2 = year + "-" + month + "-" + day + "T" + endTime;
-        console.log(output1);
-        console.log(output2);
-        newEvent(output1, output2);
+        let beginEvent = year + "-" + month + "-" + day + "T" + beginTime;
+        let endEvent = year + "-" + month + "-" + day + "T" + endTime;
+        console.log(beginEvent);
+        console.log(endEvent);
+        newEvent(beginEvent, endEvent);
     }
 }
-// '2010-01-09T12:30:00',
 
+// calendar
 /**
  * Creates calendar
  */
@@ -155,12 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
         prevYear: 'chevrons-left', // double chevron
         nextYear: 'chevrons-right' // double chevron
       },
-    //   businessHours: {
-    //     // days of week. an array of zero-based day of week integers (0=Sunday)
-    //     daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
-    //     startTime: '10:00', // a start time (10am in this example)
-    //     endTime: '18:00', // an end time (6pm in this example)
-    //   },
       dayHeaderFormat: {
         weekday: 'short'
       }
@@ -168,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
   });
 
-  /**
+/**
  * Creates new break event based on inputs
  * 
  * @param {String} beginTime HHMMSS
@@ -184,39 +232,3 @@ function newEvent(beginTime, endTime) {
       allDay: false
     });
   }
-
-function downloadPlan() {
-    var beginDate = document.getElementById("beginDate").value;
-    var beginTime = document.getElementById("beginTime").value;
-    var endDate = document.getElementById("endDate").value;
-    var endTime = document.getElementById("endTime").value;
-    var eventTitle = document.getElementById("eventTitle").value;
-    var eventLocation = document.getElementById("location").value;
-    console.log(beginDate + beginTime + endDate + endTime + eventTitle + eventLocation);
-    fileOutput = beginningFormat;
-    fileOutput = fileOutput + "\n" + ("BEGIN:VEVENT");
-    fileOutput = fileOutput + "\n" + (`DTSTART;TZID=America/Toronto:${beginDate.replace(/-/g,'')}T${beginTime.replace(':','')}00`);
-    fileOutput = fileOutput + "\n" + (`DTEND;TZID=America/Toronto:${endDate.replace(/-/g,'')}T${endTime.replace(':','')}00`);
-    fileOutput = fileOutput + "\n" + (`SUMMARY:${eventTitle}`);
-    fileOutput = fileOutput + "\n" + (`LOCATION:${eventLocation}`)
-    fileOutput = fileOutput + "\n" + ("END:VEVENT");
-    fileOutput = fileOutput + "\n" + ending;
-    download('trip_plan.ics', fileOutput);
-}
-
-/**
- * Creates and downloads file
- * https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
- * 
- * @param {String} filename name of downloaded file
- * @param {String} text file contents
- */
-function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-}
