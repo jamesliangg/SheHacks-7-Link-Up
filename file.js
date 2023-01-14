@@ -1,6 +1,10 @@
 var eventArray = [];
 var today = new Date();
 var calendar = null
+var beginningFormat = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//James Liang//SheHacks//EN`;
+var ending = 'END:VCALENDAR';
 
 /**
  * https://ourcodeworld.com/articles/read/1438/how-to-read-multiple-files-at-once-using-the-filereader-class-in-javascript
@@ -189,4 +193,30 @@ function downloadPlan() {
     var eventTitle = document.getElementById("eventTitle").value;
     var eventLocation = document.getElementById("location").value;
     console.log(beginDate + beginTime + endDate + endTime + eventTitle + eventLocation);
+    fileOutput = beginningFormat;
+    fileOutput = fileOutput + "\n" + ("BEGIN:VEVENT");
+    fileOutput = fileOutput + "\n" + (`DTSTART;TZID=America/Toronto:${beginDate.replace(/-/g,'')}T${beginTime.replace(':','')}00`);
+    fileOutput = fileOutput + "\n" + (`DTEND;TZID=America/Toronto:${endDate.replace(/-/g,'')}T${endTime.replace(':','')}00`);
+    fileOutput = fileOutput + "\n" + (`SUMMARY:${eventTitle}`);
+    fileOutput = fileOutput + "\n" + (`LOCATION:${eventLocation}`)
+    fileOutput = fileOutput + "\n" + ("END:VEVENT");
+    fileOutput = fileOutput + "\n" + ending;
+    download('trip_plan.ics', fileOutput);
+}
+
+/**
+ * Creates and downloads file
+ * https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
+ * 
+ * @param {String} filename name of downloaded file
+ * @param {String} text file contents
+ */
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
