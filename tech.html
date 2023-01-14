@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src='fullcalendar/dist/index.global.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'timeGridWeek'
+        });
+        calendar.render();
+      });
+    </script>
     <title>HTML CSS Website</title>
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -45,11 +55,35 @@
         <div class="main__content">
           <h1>TECH SECTION</h1>
           <p>Check out our technologies</p>
-          <button class="main__btn"><a href="#">Get Started</a></button>
+          <!-- <button class="main__btn"><a href="#">Get Started</a></button> -->
+          <input onchange="getFiles()" id="fileinput" type="file" class="customfile" accept=".ics" multiple>
+          <br><br>
+          <label for="beginDate">Select Beginning Date</label>
+            <input type="date" id="beginDate" name="beginDate" value="2023-01-01" min="2023-01-01" max="2023-12-31">
+            <br>
+            <label for="beginTime">Select Beginning Time</label>
+            <input type="time" id="beginTime" name="beginTime" min="00:00" max="24:00" required>
+            <br>
+            <label for="endDate">Select End Date</label>
+            <input type="date" id="endDate" name="endDate" value="2023-01-01" min="2023-01-01" max="2023-12-31">
+            <br>
+            <label for="endTime">Select Beginning Time</label>
+            <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" required>
+            <br>
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" name="eventTitle">
+            <br>
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location">
+            <br>
+            <button onclick="downloadPlan()" class="main__btn"><a href="#">Submit</a></button>
         </div>
-        <div class="main__img-container">
+        <div class="calendar_background">
+          <div id='calendar'></div>
+      </div>
+        <!-- <div class="main__img-container">
           <img id="main__img" src="images/pic2.jpg" />
-        </div>
+        </div> -->
       </div>
     </div>
 

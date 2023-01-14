@@ -251,6 +251,12 @@
     font-size: 2rem;
     font-weight: 700;
   }
+
+  .main__content h3 {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
   
   .main__btn {
     font-size: 1rem;
@@ -482,7 +488,7 @@
   
   /* Footer CSS */
   .footer__container {
-    background-color: #141414;
+    background-color: #3c933f;
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
@@ -619,4 +625,41 @@
     border: 2px solid #3c933f;
     /* height: 75%; */
     /* width: 110%; */
+  }
+
+  .customfile::-webkit-file-upload-button{
+    background: #4837ff;
+    color: #fff;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .customfile:hover {
+    background: #4837ff;
+    transition: all 0.3s ease;
+  }
+
+  .customfile::-webkit-file-upload-button:hover{
+    background: #62c5f7;
+    color: #fff;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .customfile {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #62c5f7 0%, #62c5f7 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
   }
