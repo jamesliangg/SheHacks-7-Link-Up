@@ -7,20 +7,11 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1" /> 
     <script src='fullcalendar/dist/index.global.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
-    </script>
 </head>
     <style>
         div {
-        max-height: 800px;
-        max-width: 800px;
+        max-height: 700px;
+        max-width: 1000px;
         }
     </style>
     <body>
@@ -29,7 +20,6 @@
         <h2>Plan events with ease</h2>
         <h3>File Upload here</h3>
         <input onchange="getFiles()" id="fileinput" type="file" accept=".ics" multiple>
-        <p>Hi</p>
         <h3>Submit button here</h3>
         <p>Hi2</p>
         <h3>Calendar with availabilities here</h3>

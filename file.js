@@ -58,7 +58,6 @@ function fileToArray(input) {
         } 
     }
     console.log(eventArray);
-    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -68,13 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
     //   height: 'auto',
       slotDuration: '00:30:00',
       scrollTime: '08:00:00',
-      // slotMinTime: '08:00:00',
+    //   slotMinTime: '08:00:00',
+    //   slotMaxTime: '19:00:00',
       handleWindowResize: true,
       initialView: 'timeGridWeek',
       initialDate: today,
       nowIndicator: true,
-      allDaySlot: true,
-      expandRows: true,
+    //   allDaySlot: true,
+    //   expandRows: true,
       eventBackgroundColor: '#7967B3',
       dayHeaderFormat: {
         weekday: 'short'
