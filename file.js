@@ -2,7 +2,7 @@
 var eventArray = [];
 var today = new Date();
 var calendar = null
-var beginningFormat = `BEGIN:VCALENDAR
+var fileOutput = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//James Liang//SheHacks//EN`;
 var ending = 'END:VCALENDAR';
