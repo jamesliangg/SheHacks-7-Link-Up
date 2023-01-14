@@ -59,8 +59,27 @@
           <h2>TECHNOLOGY</h2>
           <p>To get her done.</p>
           <!-- <button class="main__btn"><a href="#">Get Started</a></button> -->
-          <input onchange="getFiles()" id="fileinput" type="file" class="main__btn" accept=".ics" multiple>
-          <button class="main__btn"><a href="#">Submit</a></button>
+          <input onchange="getFiles()" id="fileinput" type="file" class="customfile" accept=".ics" multiple>
+          <br><br>
+          <label for="beginDate">Select Beginning Date</label>
+            <input type="date" id="beginDate" name="beginDate" value="2023-01-01" min="2023-01-01" max="2023-12-31">
+            <br>
+            <label for="beginTime">Select Beginning Time</label>
+            <input type="time" id="beginTime" name="beginTime" min="00:00" max="24:00" required>
+            <br>
+            <label for="endDate">Select End Date</label>
+            <input type="date" id="endDate" name="endDate" value="2023-01-01" min="2023-01-01" max="2023-12-31">
+            <br>
+            <label for="endTime">Select Beginning Time</label>
+            <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" required>
+            <br>
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" name="eventTitle">
+            <br>
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location">
+            <br>
+            <button onclick="downloadPlan()" class="main__btn"><a href="#">Submit</a></button>
         </div>
         <div class="calendar_background">
             <div id='calendar'></div>
@@ -69,6 +88,7 @@
           <img id="main__img" src="images/pic1.svg" />
         </div> -->
       </div>
+      
     </div>
 
     <!-- Services Section -->

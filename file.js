@@ -107,12 +107,6 @@ function removeOverlap(inputArray) {
 function findAvailability(inputArray) {
     calendar.removeAllEvents();
     for (var i in inputArray) {
-        // while(inputArray[i][1] < 6) {
-        //     inputArray[i][1] = "0" + inputArray[i][1];
-        // }
-        // while(inputArray[i][2] < 6) {
-        //     inputArray[i][2] = "0" + inputArray[i][2];
-        // }
         let year = inputArray[i][0].substring(0,4);
         let month = inputArray[i][0].substring(4,6);
         let day = inputArray[i][0].substring(6,8);
@@ -187,33 +181,12 @@ function newEvent(beginTime, endTime) {
     });
   }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var calendarEl = document.getElementById('calendar');
-//     var calendar = new FullCalendar.Calendar(calendarEl, {
-//       initialView: 'dayGridMonth'
-//     });
-//     calendar.render();
-//   });
-// document.addEventListener('DOMContentLoaded', function() {
-//     var calendarEl = document.getElementById('calendar');
-  
-//     calendar = new FullCalendar.Calendar(calendarEl, {
-//     //   height: 'auto',
-//       slotDuration: '00:30:00',
-//       scrollTime: '08:00:00',
-//     //   slotMinTime: '08:00:00',
-//     //   slotMaxTime: '19:00:00',
-//       handleWindowResize: true,
-//       initialView: 'timeGridWeek',
-//       initialDate: today,
-//       nowIndicator: true,
-//     //   allDaySlot: true,
-//     //   expandRows: true,
-//       eventBackgroundColor: '#7967B3',
-//       dayHeaderFormat: {
-//         weekday: 'short'
-//       }
-//     });
-  
-//     calendar.render();
-//   });
+function downloadPlan() {
+    var beginDate = document.getElementById("beginDate").value;
+    var beginTime = document.getElementById("beginTime").value;
+    var endDate = document.getElementById("endDate").value;
+    var endTime = document.getElementById("endTime").value;
+    var eventTitle = document.getElementById("eventTitle").value;
+    var eventLocation = document.getElementById("location").value;
+    console.log(beginDate + beginTime + endDate + endTime + eventTitle + eventLocation);
+}
