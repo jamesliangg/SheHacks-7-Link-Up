@@ -3,34 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src='fullcalendar/dist/index.global.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'timeGridWeek'
-        });
-        calendar.render();
-      });
-    </script>
     <title>LinkUp</title>
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://kit.fontawesome.com/f720691d02.js" crossorigin="anonymous"></script>
   </head>
   <body>
+
     <!-- Navbar Section -->
     <nav class="navbar">
       <div class="navbar__container">
-        <a href="/" id="navbar__logo"><i class="fas fa-gem"></i>NEXT</a>
+        <a href="/" id="navbar__logo"> <i class="fa-brands fa-pagelines"></i> LINKUP</a>
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span> <span class="bar"></span>
           <span class="bar"></span>
@@ -40,10 +22,10 @@
             <a href="/" class="navbar__links">Home</a>
           </li>
           <li class="navbar__item">
-            <a href="/tech.html" class="navbar__links">Tech</a>
+            <a href="/tech.html" class="navbar__links">Contact</a>
           </li>
           <li class="navbar__item">
-            <a href="/" class="navbar__links">Products</a>
+            <a href="/" class="navbar__links">About</a>
           </li>
           <li class="navbar__btn"><a href="/" class="button">Sign Up</a></li>
         </ul>
@@ -51,33 +33,24 @@
     </nav>
 
     <!-- Hero Section -->
-    <script type="text/javascript" src="file.js"> </script>
     <div class="main">
       <div class="main__container">
         <div class="main__content">
-          <h1>Link-Up</h1>
+          <h1>LINK-UP</h1>
           <h2>TECHNOLOGY</h2>
           <p>To get her done.</p>
           <button class="main__btn"><a href="#">Get Started</a></button>
         </div>
-        <div class="calendar_background">
-            <div id='calendar'></div>
+        <div class="main__img--container">
+          <img id="main__img" src="image/cute_Calender.png" />
         </div>
-        <!-- <div class="main__img--container">
-          <img id="main__img" src="images/pic1.svg" />
-        </div> -->
       </div>
     </div>
 
     <!-- Services Section -->
     <div class="services">
-      <h1>See what the hype is about</h1>
+      <h1>See what the Link-Up is about</h1>
       <div class="services__container">
-        <div class="services__card">
-          <h2>Experience Bliss</h2>
-          <p>AI Powered technology</p>
-          <button>Get Started</button>
-        </div>
         <div class="services__card">
           <h2>Are you Ready?</h2>
           <p>Take the leap</p>
@@ -117,7 +90,7 @@
       <section class="social__media">
         <div class="social__media--wrap">
           <div class="footer__logo">
-            <a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+            <a href="/" id="footer__logo"><i class="fa-brands fa-pagelines"></i> LINKUP</a>
           </div>
           <p class="website__rights">© LinkUp 2023. All rights reserved</p>
           <div class="social__icons">
