@@ -115,13 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar = new FullCalendar.Calendar(calendarEl, {
     //   hiddenDays: [0,6],
     //   height: '98%',
-    //   slotDuration: '00:30:00',
+      slotDuration: '00:30:00',
       scrollTime: '08:00:00',
       // slotMinTime: '08:00:00',
       handleWindowResize: true,
       initialView: 'timeGridWeek',
       initialDate: today,
-      nowIndicator: true,
+    //   nowIndicator: true,
       allDaySlot: false,
       expandRows: true,
       eventBackgroundColor: '#ff8177',
@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         weekday: 'short'
       }
     });
-  
     calendar.render();
   });
 
