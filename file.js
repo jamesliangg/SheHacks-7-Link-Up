@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //   nowIndicator: true,
       allDaySlot: false,
       expandRows: true,
-      eventBackgroundColor: '#3c933f',
+      eventBackgroundColor: '#2e5984',
       headerToolbar: {
         left: 'title',
         center: '',
