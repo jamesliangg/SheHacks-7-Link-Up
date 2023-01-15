@@ -31,6 +31,7 @@
   }
   
   #navbar__logo {
+    margin-top: 0.5rem;
     background-color: #fdbd69;
     background-image: linear-gradient(to top, #faf6f7 0%, #f9f3f1 100%);
     background-size: 100%;
@@ -43,6 +44,7 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    max-height:80%;
   }
   
   .fa-gem {
