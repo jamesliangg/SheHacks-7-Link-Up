@@ -368,7 +368,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 50vh;
   }
   
   .services h1 {
@@ -693,25 +693,17 @@
   /* About Section */
   .about {
     background: #80cee0;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
+    /* flex-wrap: wrap;  */
     align-items: center;
-    height: 40vh;
+    height: 80vh;
   }
   
   .about h1 {
-    margin: 2rem;
+    margin: 0rem;
     background-color: #f1f6f1;
-    /* background-image: linear-gradient(
-      to right,
-      #ff8177 0%,
-      #ff867a 0%,
-      #ff8c7f 21%,
-      #f99185 52%,
-      #cf556c 78%,
-      #b12a5b 100%
-    ); */
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -719,26 +711,32 @@
     -moz-text-fill-color: transparent;
     margin-bottom: 1rem;
     font-size: 3rem;
+    text-align: center;
   }
   
   .about__container {
+    /* background: #80cee0; */
+    margin-top: 3rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
+    align-items: center;
+    height: 55vh;
   }
 
   .about__block {
     margin: 0rem;
     height: 100%;
     width: 100%;
-    /* border-radius: 4px; */
-    /* color: #80cee0; */
-    /* background-image: linear-gradient(
+    border-radius: 4px;
+    color: #80cee0;
+    background-image: linear-gradient(
         to bottom,
         #fdbd69 0%,
         #80cee0 100%
       ),
-      url('/images/pic3.jpg'); */
+      url('/images/pic3.jpg');
     background-size: cover;
     position: relative;
     color: #fff;
