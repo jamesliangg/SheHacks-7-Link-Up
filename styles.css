@@ -6,7 +6,7 @@
   }
   
   .navbar {
-    background: #3c933f;
+    background: #80cee0;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
   }
   
   #navbar__logo {
-    background-color: #f6efef;
+    background-color: #fdbd69;
     background-image: linear-gradient(to top, #faf6f7 0%, #f9f3f1 100%);
     background-size: 100%;
     -webkit-background-clip: text;
@@ -89,17 +89,17 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: #62c5f7;
+    background: #29c5f6;
     color: #fff;
   }
   
   .button:hover {
-    background: #4837ff;
+    background: #fdbd69;
     transition: all 0.3s ease;
   }
   
   .navbar__links:hover {
-    color: #f77062;
+    color: #ff781f;
     transition: all 0.3s ease;
   }
   
@@ -200,7 +200,7 @@
   
   /* Main Content CSS */
   .main {
-    background-color: rgb(235, 233, 231);
+    background-color: #fdbd69;
   }
   
   .main__container {
@@ -210,7 +210,7 @@
     justify-self: center;
     margin: 0 auto;
     height: 90vh;
-    background-color: rgb(235, 233, 231);
+    background-color: #fdbd69;
     z-index: 1;
     width: 100%;
     max-width: 1300px;
@@ -219,14 +219,14 @@
   }
   
   .main__content {
-    color: rgb(12, 12, 12);
+    color: #2e5984;
     width: 100%;
   }
   
   .main__content h1 {
     font-size: 4rem;
-    background-color: #3c933f;
-    background-image: linear-gradient(to top, #3c933f 0%, #3c933f 100%);
+    background-color: #7abe80;
+    background-image: linear-gradient(to top, #f1f6f1 0%, #f1f1f1 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -237,8 +237,8 @@
   .main__content h2 {
     font-size: 4rem;
     margin-top: 10px;
-    background-color: #3c933f;
-    background-image: linear-gradient(-20deg, #3c933f 0%, #3c933f 100%);
+    background-color: #7abe80;
+    background-image: linear-gradient(-20deg, #f1f6f1 0%, #f1f6f1 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -260,7 +260,7 @@
   
   .main__btn {
     font-size: 1rem;
-    background-image: linear-gradient(to top, #62c5f7 0%, #62c5f7 100%);
+    background-image: linear-gradient(to top, #29c5f6 0%, #29c5f6 100%);
     padding: 14px 32px;
     border: none;
     border-radius: 4px;
@@ -286,7 +286,7 @@
     left: 0;
     width: 0;
     height: 100%;
-    background: #4837ff;
+    background: #7878d6;
     transition: all 0.35s;
     border-radius: 4px;
   }
@@ -363,7 +363,7 @@
   
   /* Services Section */
   .services {
-    background: rgb(235, 233, 231);
+    background: #80cee0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -512,7 +512,7 @@
   
   /* Footer CSS */
   .footer__container {
-    background-color: #3c933f;
+    background-color: #7abe80;
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
